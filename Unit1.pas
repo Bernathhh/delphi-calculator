@@ -46,158 +46,85 @@ implementation
 
 // Кнопка сложения
 procedure TForm1.Button1Click(Sender: TObject);
-var
-  num1, num2: Double;
 begin
   if (Edit1.Text = '') or (Edit2.Text = '') then
-  begin
-    ShowMessage('Ошибка: введите оба числа');
-    Exit;
-  end;
-  try
-    num1 := StrToFloat(Edit1.Text);
-    num2 := StrToFloat(Edit2.Text);
-    Edit3.Text := FloatToStr(num1 + num2);
-  except
-    ShowMessage('Ошибка: введите корректные числа');
-  end;
+    ShowMessage('Ошибка: введите оба числа')
+  else
+    Edit3.Text := FloatToStr(StrToFloat(Edit1.Text) + StrToFloat(Edit2.Text));
 end;
 
 // Кнопка вычитания
 procedure TForm1.Button2Click(Sender: TObject);
-var
-  num1, num2: Double;
 begin
   if (Edit1.Text = '') or (Edit2.Text = '') then
-  begin
-    ShowMessage('Ошибка: введите оба числа');
-    Exit;
-  end;
-  try
-    num1 := StrToFloat(Edit1.Text);
-    num2 := StrToFloat(Edit2.Text);
-    Edit3.Text := FloatToStr(num1 - num2);
-  except
-    ShowMessage('Ошибка: введите корректные числа');
-  end;
+    ShowMessage('Ошибка: введите оба числа')
+  else
+    Edit3.Text := FloatToStr(StrToFloat(Edit1.Text) - StrToFloat(Edit2.Text));
 end;
 
 // Кнопка умножения
 procedure TForm1.Button3Click(Sender: TObject);
-var
-  num1, num2: Double;
 begin
   if (Edit1.Text = '') or (Edit2.Text = '') then
-  begin
-    ShowMessage('Ошибка: введите оба числа');
-    Exit;
-  end;
-  try
-    num1 := StrToFloat(Edit1.Text);
-    num2 := StrToFloat(Edit2.Text);
-    Edit3.Text := FloatToStr(num1 * num2);
-  except
-    ShowMessage('Ошибка: введите корректные числа');
-  end;
+    ShowMessage('Ошибка: введите оба числа')
+  else
+    Edit3.Text := FloatToStr(StrToFloat(Edit1.Text) * StrToFloat(Edit2.Text));
 end;
 
 // Кнопка деления
 procedure TForm1.Button4Click(Sender: TObject);
-var
-  num1, num2: Double;
-  intNum1, intNum2: Integer;
 begin
   if (Edit1.Text = '') or (Edit2.Text = '') then
+    ShowMessage('Ошибка: введите оба числа')
+  else
   begin
-    ShowMessage('Ошибка: введите оба числа');
-    Exit;
-  end;
-  try
     if CheckBox1.Checked then
     begin
-      intNum1 := StrToInt(Edit1.Text);
-      intNum2 := StrToInt(Edit2.Text);
-      if intNum2 = 0 then
-      begin
-        ShowMessage('Ошибка: деление на ноль');
-        Exit;
-      end;
-      Edit3.Text := IntToStr(intNum1 div intNum2);
+      if StrToInt(Edit2.Text) = 0 then
+        ShowMessage('Ошибка: деление на ноль')
+      else
+        Edit3.Text := IntToStr(StrToInt(Edit1.Text) div StrToInt(Edit2.Text));
     end
     else
     begin
-      num1 := StrToFloat(Edit1.Text);
-      num2 := StrToFloat(Edit2.Text);
-      if num2 = 0 then
-      begin
-        ShowMessage('Ошибка: деление на ноль');
-        Exit;
-      end;
-      Edit3.Text := FloatToStr(num1 / num2);
+      if StrToFloat(Edit2.Text) = 0 then
+        ShowMessage('Ошибка: деление на ноль')
+      else
+        Edit3.Text := FloatToStr(StrToFloat(Edit1.Text) / StrToFloat(Edit2.Text));
     end;
-  except
-    ShowMessage('Ошибка: введите корректные числа');
   end;
 end;
 
 // Кнопка квадрата
 procedure TForm1.Button5Click(Sender: TObject);
-var
-  num1: Double;
 begin
   if Edit1.Text = '' then
-  begin
-    ShowMessage('Ошибка: введите число');
-    Exit;
-  end;
-  try
-    num1 := StrToFloat(Edit1.Text);
-    Edit3.Text := FloatToStr(Sqr(num1));
-  except
-    ShowMessage('Ошибка: введите корректное число');
-  end;
+    ShowMessage('Ошибка: введите число')
+  else
+    Edit3.Text := FloatToStr(Sqr(StrToFloat(Edit1.Text)));
 end;
 
 // Кнопка корня квадратного
 procedure TForm1.Button6Click(Sender: TObject);
-var
-  num1: Double;
 begin
   if Edit1.Text = '' then
+    ShowMessage('Ошибка: введите число')
+  else
   begin
-    ShowMessage('Ошибка: введите число');
-    Exit;
-  end;
-  try
-    num1 := StrToFloat(Edit1.Text);
-    if num1 < 0 then
-    begin
-      ShowMessage('Ошибка: корень из отрицательного числа');
-      Exit;
-    end;
-    Edit3.Text := FloatToStr(Sqrt(num1));
-  except
-    ShowMessage('Ошибка: введите корректное число');
+    if StrToFloat(Edit1.Text) < 0 then
+      ShowMessage('Ошибка: корень из отрицательного числа')
+    else
+      Edit3.Text := FloatToStr(Sqrt(StrToFloat(Edit1.Text)));
   end;
 end;
 
 // Кнопка возведения в степень
 procedure TForm1.Button7Click(Sender: TObject);
-var
-  num1, num2: Double;
 begin
   if (Edit1.Text = '') or (Edit2.Text = '') then
-  begin
-    ShowMessage('Ошибка: введите оба числа');
-    Exit;
-  end;
-  try
-    num1 := StrToFloat(Edit1.Text);
-    num2 := StrToFloat(Edit2.Text);
-    Edit3.Text := FloatToStr(Power(num1, num2));
-  except
-    ShowMessage('Ошибка: введите корректные числа');
-  end;
+    ShowMessage('Ошибка: введите оба числа')
+  else
+    Edit3.Text := FloatToStr(Power(StrToFloat(Edit1.Text), StrToFloat(Edit2.Text)));
 end;
 
 // Кнопка очистки
